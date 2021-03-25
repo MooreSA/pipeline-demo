@@ -1,15 +1,10 @@
 Jenkinsfile (Declarative Pipeline)
 pipeline {
-    agent { docker { image 'node:14-alpine' } }
+    agent any
     stages {
-        stage('build') {
-            steps 
-            retry(3) {
-                sh 'npm --version'
-            }
-
-            timeout(time: 3, unit: 'MINUTES') {
-                sh 'echo "help me"'
+        stage('Test') {
+            steps {
+                sh 'echo "Fail!"; exit 1'
             }
         }
     }
